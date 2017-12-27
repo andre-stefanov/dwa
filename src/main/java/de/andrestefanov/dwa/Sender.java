@@ -46,19 +46,21 @@ public class Sender {
 
     public void sendInspectionRequest() {
         Message message = new Message();
+        message.text = SLACK_QUESTION_TEXT;
         message.channel = SLACK_CHANNEL_ID;
         message.username = SLACK_BOT_NAME;
 
         message.attachments = new ArrayList<>();
 
         Attachment attachment = new Attachment();
-        attachment.fallback = SLACK_QUESTION_TEXT;
+        attachment.callbackId = "dwa";
+        attachment.fallback = "error";
         attachment.actions = new ArrayList<>();
         message.attachments.add(attachment);
 
         Action positive = new Action();
         positive.type = "button";
-        positive.name = "signalr";
+        positive.name = "dwa";
         positive.value = "positive";
         positive.text = "Working";
         positive.style = "primary";
@@ -66,7 +68,7 @@ public class Sender {
 
         Action negative = new Action();
         negative.type = "button";
-        negative.name = "signalr";
+        negative.name = "dwa";
         negative.value = "negative";
         negative.text = "Broken";
         negative.style = "danger";

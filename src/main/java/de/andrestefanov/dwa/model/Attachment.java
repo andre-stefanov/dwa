@@ -11,6 +11,10 @@ public class Attachment {
     @Expose
     public String fallback;
 
+    @SerializedName("callback_id")
+    @Expose
+    public String callbackId;
+
     @SerializedName("actions")
     @Expose
     public List<Action> actions;
@@ -75,6 +79,7 @@ public class Attachment {
     public String toString() {
         return "Attachment{" +
                 "fallback='" + fallback + '\'' +
+                ", callbackId='" + callbackId + '\'' +
                 ", actions=" + actions +
                 ", color='" + color + '\'' +
                 ", pretext='" + pretext + '\'' +

@@ -76,7 +76,7 @@ public class Controller {
         ButtonAction payload = new Gson().fromJson(request.getParameter("payload"), ButtonAction.class);
 
         for (Action action : payload.actions) {
-            if ("signalr".equals(action.name)) {
+            if ("dwa".equals(action.name)) {
                 if (action.value.equals("negative")) {
                     storage.resetTimestamp();
                 }
