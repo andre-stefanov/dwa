@@ -6,7 +6,8 @@ import de.andrestefanov.dwa.model.Message;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.logging.HttpLoggingInterceptor;
-import org.springframework.stereotype.Component;
+import org.springframework.scheduling.annotation.Async;
+import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -16,7 +17,7 @@ import java.util.ArrayList;
 
 import static de.andrestefanov.dwa.Application.*;
 
-@Component
+@Service
 public class Sender {
 
     private SlackService slackService;
@@ -44,6 +45,7 @@ public class Sender {
         slackService = retrofit.create(SlackService.class);
     }
 
+    @Async
     public void sendInspectionRequest() {
         Message message = new Message();
         message.text = SLACK_QUESTION_TEXT;
@@ -81,6 +83,7 @@ public class Sender {
         }
     }
 
+    @Async
     public void removeMessage(String messageTs) {
         Message message = new Message();
         message.channel = SLACK_CHANNEL_ID;
@@ -93,6 +96,7 @@ public class Sender {
         }
     }
 
+    @Async
     public void sendCurrentStatus(long days) {
         Message message = new Message();
         message.channel = SLACK_CHANNEL_ID;

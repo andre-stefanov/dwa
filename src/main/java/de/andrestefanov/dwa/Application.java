@@ -6,7 +6,6 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
-import org.springframework.util.StringUtils;
 
 import java.util.concurrent.Executor;
 
@@ -15,12 +14,12 @@ import java.util.concurrent.Executor;
 @EnableAsync
 public class Application {
 
-    public static final String SLACK_CHANNEL_ID = System.getenv("SLACK_CHANNEL_ID");
-    public static final String SLACK_BOT_TOKEN = System.getenv("SLACK_BOT_TOKEN");
-    public static final String SLACK_BOT_NAME = System.getenv("SLACK_BOT_NAME");
-    public static final String SLACK_QUESTION_TEXT = System.getenv("SLACK_QUESTION_TEXT");
+    static final String SLACK_CHANNEL_ID = System.getenv("SLACK_CHANNEL_ID");
+    static final String SLACK_BOT_TOKEN = System.getenv("SLACK_BOT_TOKEN");
+    static final String SLACK_BOT_NAME = System.getenv("SLACK_BOT_NAME");
+    static final String SLACK_QUESTION_TEXT = System.getenv("SLACK_QUESTION_TEXT");
 
-    public static final String HOST_URL = System.getenv("HOST_URL");
+    static final String HOST_URL = System.getenv("HOST_URL");
 
     @Bean
     public Executor asyncExecutor() {

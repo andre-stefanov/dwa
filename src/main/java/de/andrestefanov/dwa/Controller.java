@@ -4,8 +4,6 @@ import com.google.gson.Gson;
 import de.andrestefanov.dwa.model.Action;
 import de.andrestefanov.dwa.model.ButtonAction;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.io.InputStreamResource;
-import org.springframework.core.io.Resource;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -61,7 +59,7 @@ public class Controller {
     }
 
     @RequestMapping(value = "/remove/{ts}", method = RequestMethod.GET)
-    public void remove(String ts) {
+    public void remove(@PathVariable String ts) {
         sender.removeMessage(ts);
     }
 
